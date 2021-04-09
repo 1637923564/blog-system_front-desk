@@ -14,6 +14,16 @@
 import { computed, toRefs } from 'vue'
 
 export default {
+  props: {
+    text: {
+      type: String,
+      required: true
+    },
+    effect: {
+      type: String,
+      default: 'light'
+    }
+  },
   setup(props) {
     props = toRefs(props)
     
@@ -31,16 +41,6 @@ export default {
     return {
       text: props.text,
       theme
-    }
-  },
-  props: {
-    text: {
-      type: String,
-      required: true
-    },
-    effect: {
-      type: String,
-      default: 'light'
     }
   }
 }

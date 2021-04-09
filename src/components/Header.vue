@@ -40,6 +40,10 @@ import { useStore } from 'vuex'
 import Switch from './public/Switch.vue'
 import Tooltip from './public/Tooltip.vue'
 export default {
+  components: {
+    Switch,
+    Tooltip
+  },
   setup() {
     const { state, commit } = useStore()
 
@@ -53,10 +57,6 @@ export default {
       getSwitchVal,
       state
     }
-  },
-  components: {
-    Switch,
-    Tooltip
   }
 }
 </script>
