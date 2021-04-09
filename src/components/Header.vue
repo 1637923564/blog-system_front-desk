@@ -21,7 +21,12 @@
               联系方式
             </div>
             <div class="light-switch">
-              <Switch />
+              <Tooltip
+                :text="state.theme === 'light' ? '关灯' : '开灯'"
+                :effect="state.theme === 'light' ? 'light' : 'dark'"
+              >
+                <Switch :defaulVal="state.theme === 'light'" @change="getSwitchVal" />
+              </Tooltip>
             </div>
           </div>
         </nav>
@@ -31,10 +36,27 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
 import Switch from './public/Switch.vue'
+import Tooltip from './public/Tooltip.vue'
 export default {
+  setup() {
+    const { state, commit } = useStore()
+
+    const getSwitchVal = val => {
+      const theme = val ? 'light' : 'dark'
+      commit('setTheme', theme)
+      localStorage.setItem('globalTheme', theme)
+    }
+
+    return {
+      getSwitchVal,
+      state
+    }
+  },
   components: {
-    Switch
+    Switch,
+    Tooltip
   }
 }
 </script>
@@ -84,7 +106,7 @@ header {
             cursor: pointer;
 
             .iconfont {
-              font-size: 12px;
+              font-size: 14px;
             }
           }
         }

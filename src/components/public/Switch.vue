@@ -6,9 +6,16 @@
 
 <script>
 import { ref, computed } from 'vue'
+
 export default {
-  setup() {
-    const val = ref(false) // 为 false 时滑块是关闭状态
+  props: {
+    defaulVal: {
+      default: false,
+      type: Boolean
+    }
+  },
+  setup(props, { emit }) {
+    const val = ref(props.defaulVal) // 为 false 时滑块是关闭状态
 
     const iStyle = computed(() => {
       return val.value ? 'left: calc(100% - 12px)' : 'left: 2px'
@@ -19,7 +26,7 @@ export default {
 
     const controlSwitch = () => {
       val.value = !val.value
-      console.log(val.value);
+      emit('change', val.value)
     }
     
     return {
@@ -47,7 +54,7 @@ export default {
       background-color: #fff;
       border-radius: 50%;
       top: 2px;
-      transition: all .1s linear;
+      transition: all .1s ease;
     }
   }
 </style>
