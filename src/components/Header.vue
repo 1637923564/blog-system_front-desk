@@ -2,18 +2,40 @@
   <header>
     <div class="header-body">
       <div class="header-logo">
-        <img src="../assets/image/logo.png">
+        <router-link to="/">
+          <img src="../assets/image/logo.png">
+        </router-link>
       </div>
       <div class="header-nav">
-        nav
+        <nav>
+          <div class="header-link">
+            <router-link to="/contact">联系我</router-link>
+            <router-link to="/about">关于</router-link>
+          </div>
+          <div class="header-control">
+            <div class="search-blog">
+              <i class="iconfont icon-blog-search"></i>
+              搜索
+            </div>
+            <div class="contact-drop">
+              联系方式
+            </div>
+            <div class="light-switch">
+              <Switch />
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import Switch from './public/Switch.vue'
 export default {
-
+  components: {
+    Switch
+  }
 }
 </script>
 
@@ -22,6 +44,7 @@ export default {
 
 header {
   height: 90px;
+  border-bottom: $line;
 
   .header-body {
     height: 100%;
@@ -37,7 +60,35 @@ header {
       }
     }
     .header-nav {
+      font-size: 12px;
 
+      nav {
+        display: flex;
+        color: $color-muted;
+
+        .header-link {
+          display: flex;
+          align-items: center;
+          a {
+            margin-right: 20px;
+            color: $color-muted;
+          }
+        }
+        .header-control {
+          display: flex;
+          border-left: 1px solid #9b9b9b;
+          align-items: center;
+          
+          &>div {
+            margin-left: 20px;
+            cursor: pointer;
+
+            .iconfont {
+              font-size: 12px;
+            }
+          }
+        }
+      }
     }
   }
 }
