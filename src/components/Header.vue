@@ -7,15 +7,16 @@
         </router-link>
       </div>
       <div class="header-nav">
-        <nav>
+        <nav class="font-heading">
           <div class="header-link">
-            <router-link to="/contact">联系我</router-link>
-            <router-link to="/about">关于</router-link>
+            <router-link to="/contact" class="href-link">联系我</router-link>
+            <router-link to="/about" class="href-link">关于</router-link>
           </div>
           <div class="header-control">
             <div class="search-blog">
               <i class="iconfont icon-blog-search"></i>
               搜索
+              <Search class="search" />
             </div>
             <div class="contact-drop">
               联系方式
@@ -39,10 +40,12 @@
 import { useStore } from 'vuex'
 import Switch from './public/Switch.vue'
 import Tooltip from './public/Tooltip.vue'
+import Search from './Search.vue'
 export default {
   components: {
     Switch,
-    Tooltip
+    Tooltip,
+    Search
   },
   setup() {
     const { state, commit } = useStore()
@@ -66,6 +69,7 @@ export default {
 
 header {
   height: 90px;
+  box-sizing: border-box;
   border-bottom: $line;
 
   .header-body {
@@ -107,6 +111,13 @@ header {
 
             .iconfont {
               font-size: 14px;
+            }
+          }
+          .search-blog {
+            .search {
+              position: fixed;
+              left: 0;
+              top: 144px;
             }
           }
         }
