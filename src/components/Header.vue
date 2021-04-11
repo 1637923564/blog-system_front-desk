@@ -71,16 +71,24 @@ header {
   height: 90px;
   box-sizing: border-box;
   border-bottom: $line;
+  padding: 0 20px;
 
   .header-body {
     height: 100%;
-    width: $content-size;
+    max-width: $content-size;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     .header-logo {
+      font-size: 0;
+      
+      a {
+        height: auto;
+        display: inline-block;
+        font-size: 0;
+      }
       img {
         height: 40px;
       }
